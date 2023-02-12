@@ -1,12 +1,8 @@
 import { React, useEffect, useState } from 'react';
-import { styled } from '@mui/material/styles';
 import "../../css/chat.css";
 import auth from "../../utils/auth";
-import { useSubscription, useQuery, useLazyQuery } from '@apollo/client';
-import { useMutation } from "@apollo/client";
-import { QUERY_MESSAGES, QUERY_ME, QUERY_USERS } from '../../utils/queries';
-import { GET_MESSAGES } from '../../utils/subscriptions';
-import { POST_MESSAGE } from '../../utils/mutations';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME, QUERY_USERS } from '../../utils/queries';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
