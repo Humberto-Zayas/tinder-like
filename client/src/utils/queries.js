@@ -95,7 +95,7 @@ query usersById($_id: [ID!]) {
   usersById(_id: $_id) {
     _id
     username
-    kinks
+    interests
     role
   }
 }
@@ -111,7 +111,7 @@ query Query {
     ethnicity
     role
     age
-    kinks
+    interests
     location
     friends{
       _id

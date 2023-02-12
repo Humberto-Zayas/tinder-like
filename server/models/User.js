@@ -50,7 +50,7 @@ const userSchema = new Schema(
       unique: false,
       trim: true
     },
-    kinks: {
+    interests: {
       type: [String],
       required: false,
       unique: false

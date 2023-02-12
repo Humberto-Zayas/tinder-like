@@ -6,7 +6,7 @@
         "age" : "28",
         "height" : "5'11''",
         "weight" : "140",  
-        "role" : "female", 
+        "role" : "male", 
         "ethnicity" : "white", 
         "interests" : [], 
         "description" : "this is my description", 
@@ -64,8 +64,8 @@
         "location" : [37.774929, -122.419416]
     },
     { 
-        "username" : "someCrazySissy", 
-        "email" : "somecrazysissy@hotmail.com", 
+        "username" : "someCrazyGirl", 
+        "email" : "somecrazygirl@hotmail.com", 
         "password" : "AP3EUTRZoxzsiHn",
         "age" : "24",
         "height" : "5'04''",
@@ -80,8 +80,8 @@
         "location" : [58.730610, -92.935242]
     },
     { 
-        "username" : "someMildManneredSissy", 
-        "email" : "someMildManneredSissy@hotmail.com", 
+        "username" : "someMildManneredGirl", 
+        "email" : "someMildManneredGirl@hotmail.com", 
         "password" : "AP3EUTRZoxzsiHn",
         "age" : "24",
         "height" : "5'04''",

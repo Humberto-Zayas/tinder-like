@@ -17,7 +17,7 @@ const Signup = () => {
     weight: "",
     role: "",
     ethnicity: "",
-    kinks: "",
+    interests: "",
     description: "",
     photoURL: ""
   });

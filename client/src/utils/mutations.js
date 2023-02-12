@@ -53,26 +53,26 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER_INTERESTS = gql`
-  mutation addUserInterests($kinks: [Interests]) {
-    addUserInterests(kinks: $kinks) {
+  mutation addUserInterests($interests: [Interests]) {
+    addUserInterests(interests: $interests) {
       token
       user {
         _id
         username
-        kinks
+        interests
       }
     }
   }
 `;
 
 export const DELETE_USER_INTERESTS = gql`
-  mutation deleteUserInterests($kinks: [Interests]) {
-    deleteUserInterests(kinks: $kinks) {
+  mutation deleteUserInterests($interests: [Interests]) {
+    deleteUserInterests(interests: $interests) {
       token
       user {
         _id
         username
-        kinks
+        interests
       }
     }
   }

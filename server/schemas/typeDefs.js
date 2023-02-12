@@ -32,7 +32,7 @@ const typeDefs = gql`
     description: String
     photoURL: String
     friendCount: Int
-    kinks: [Interests]
+    interests: [Interests]
     friends: [User]
     messages: [Message]
     location: [Float]
@@ -67,8 +67,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     editUser(username: String, age: String, height: String, weight: String, role: String, ethnicity: String, description: String, photoURL: String,): Auth
-    addUserInterests(kinks: [Interests]) : Auth
-    deleteUserInterests(kinks: [Interests]) : Auth
+    addUserInterests(interests: [Interests]) : Auth
+    deleteUserInterests(interest: [Interests]) : Auth
     addMovie(movieTitle: String!): Movie
     addReaction(movieId: ID!, reactionBody: String!): Movie
     addFriend(friendId: ID!): User

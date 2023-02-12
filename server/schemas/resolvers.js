@@ -56,13 +56,6 @@ const resolvers = {
       // }
       // throw new AuthenticationError("Not logged in");
     },
-    // kinks: async (parent, { username }) => {
-    //   const params = username ? { username } : {};
-    //   return Interest.find(params).sort({ createdAt: -1 });
-    // },
-    // interest: async (parent, { _id }) => {
-    //   return Interest.findOne({ _id });
-    // },
     //Get All Movies//
     // movies: async (parent, { username }) => {
     //   const params = username ? { username } : {};
@@ -119,36 +112,22 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    // addInterest: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const interest = await Interest.create({ ...args, username: context.user.username });
     
-    //     await User.findByIdAndUpdate(
-    //       { _id: context.user._id },
-    //       { $push: { kinks: interest._id } },
-    //       { new: true }
-    //     );
-    
-    //     return interest;
-    //   }
-    
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
     addUserInterests: async (parent, args, context) => { // this is how we can control interest addtions
       if (context.user) { // if logged in
         let combined = []
         const oldUserData = await User.findById( // first find the whole user data by ID
           { _id: context.user._id }
         )
-        if(oldUserData.kinks.length) {
-          const previousStrings = oldUserData.kinks; // grab their old interest/strings
+        if(oldUserData.interests.length) {
+          const previousStrings = oldUserData.interests; // grab their old interest/strings
           const passedArgs = args; // save the arguements its an object with an array inside...
-          combined = [...previousStrings, ...passedArgs.kinks] // combine them, notice
+          combined = [...previousStrings, ...passedArgs.interests] // combine them, notice
           combined = combined.filter((item, index) => combined.indexOf(item) === index); // this will remove duplicate values for us
         } else {
           
           const passedArgs = args; // save the arguements its an object with an array inside...
-          combined = [...passedArgs.kinks] // combine them, notice
+          combined = [...passedArgs.interests] // combine them, notice
           combined = combined.filter((item, index) => combined.indexOf(item) === index); // this will remove duplicate values for us
         }
        
@@ -156,7 +135,7 @@ const resolvers = {
         
         const user = await User.findByIdAndUpdate( // and finally add the new combined array
           { _id: context.user._id },
-          { $set: { kinks: combined } }, // use $set to replace the contents instead of making/adding new stuff
+          { $set: { interests: combined } }, // use $set to replace the contents instead of making/adding new stuff
           { new: true }
         );
         const token = signToken(user);
@@ -168,10 +147,10 @@ const resolvers = {
     },
     deleteUserInterests: async (parent, args, context) => {
       if (context.user) {
-        // console.log(args.kinks)
+        // console.log(args.interests)
         const user = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { kinks: { $in: args.kinks }  } }, //sauce
+          { $pull: { interests: { $in: args.interests }  } }, //sauce
           { new: true }
         );
         const token = signToken(user);
