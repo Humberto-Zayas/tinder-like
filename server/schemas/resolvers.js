@@ -60,7 +60,7 @@ const resolvers = {
     //   const params = username ? { username } : {};
     //   return Interest.find(params).sort({ createdAt: -1 });
     // },
-    // kink: async (parent, { _id }) => {
+    // interest: async (parent, { _id }) => {
     //   return Interest.findOne({ _id });
     // },
     //Get All Movies//
@@ -121,27 +121,27 @@ const resolvers = {
     },
     // addInterest: async (parent, args, context) => {
     //   if (context.user) {
-    //     const kink = await Interest.create({ ...args, username: context.user.username });
+    //     const interest = await Interest.create({ ...args, username: context.user.username });
     
     //     await User.findByIdAndUpdate(
     //       { _id: context.user._id },
-    //       { $push: { kinks: kink._id } },
+    //       { $push: { kinks: interest._id } },
     //       { new: true }
     //     );
     
-    //     return kink;
+    //     return interest;
     //   }
     
     //   throw new AuthenticationError('You need to be logged in!');
     // },
-    addUserInterests: async (parent, args, context) => { // this is how we can control kink addtions
+    addUserInterests: async (parent, args, context) => { // this is how we can control interest addtions
       if (context.user) { // if logged in
         let combined = []
         const oldUserData = await User.findById( // first find the whole user data by ID
           { _id: context.user._id }
         )
         if(oldUserData.kinks.length) {
-          const previousStrings = oldUserData.kinks; // grab their old kink/strings
+          const previousStrings = oldUserData.kinks; // grab their old interest/strings
           const passedArgs = args; // save the arguements its an object with an array inside...
           combined = [...previousStrings, ...passedArgs.kinks] // combine them, notice
           combined = combined.filter((item, index) => combined.indexOf(item) === index); // this will remove duplicate values for us

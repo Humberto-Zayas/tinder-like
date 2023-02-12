@@ -45,14 +45,14 @@ const EditProfile = () => {
   const [addUserInterests, { error: addUserInterestsError }] = useMutation(ADD_USER_INTERESTS); //setup the mutations adding kinks
   const [deleteUserInterests, { error: deleteUserInterestsError }] = useMutation(DELETE_USER_INTERESTS); //more mutations for deleting kinks
 
-  const handleAddInterest = (kink) => { //on click we pass the kink to addUserInterests mutation
+  const handleAddInterest = (interest) => { //on click we pass the interest to addUserInterests mutation
     return async () => {
       try {
         await addUserInterests({
-          variables: { kinks: [kink] }, // <- here she goes, it has to be in an array item thats what the resolver expects to use
+          variables: { kinks: [interest] }, // <- here she goes, it has to be in an array item thats what the resolver expects to use
         });
-        setSelectableInterests(selectableInterests => selectableInterests.filter(item => item !== kink).sort()) //remove the passed kink from the selectable list cuz they clicked on it
-        setDeletableInterests([...deletableInterests, kink].sort()) // move the kink to the deletable list
+        setSelectableInterests(selectableInterests => selectableInterests.filter(item => item !== interest).sort()) //remove the passed interest from the selectable list cuz they clicked on it
+        setDeletableInterests([...deletableInterests, interest].sort()) // move the interest to the deletable list
         // check if current user has token in localstorage
         auth.loggedIn();
         setProfileUpdated(true);
@@ -62,14 +62,14 @@ const EditProfile = () => {
     }
   }
 
-  const handleDeleteInterest = (kink) => { // on click we pass the kink to deleteUserInterests mutation
+  const handleDeleteInterest = (interest) => { // on click we pass the interest to deleteUserInterests mutation
     return async () => {
       try {
         await deleteUserInterests({
-          variables: { kinks: [kink] }, //<- here she goes like adding before
+          variables: { kinks: [interest] }, //<- here she goes like adding before
         });
-        setDeletableInterests(deletableInterests => deletableInterests.filter(item => item !== kink).sort()) // remove the passed kink from the deletable list cuz they clicked on it
-        setSelectableInterests([...selectableInterests, kink].sort()) // move the kink back to the first selectable list
+        setDeletableInterests(deletableInterests => deletableInterests.filter(item => item !== interest).sort()) // remove the passed interest from the deletable list cuz they clicked on it
+        setSelectableInterests([...selectableInterests, interest].sort()) // move the interest back to the first selectable list
         // check if current user has token in localstorage
         auth.loggedIn();
         setProfileUpdated(true);
@@ -700,16 +700,16 @@ const EditProfile = () => {
                 <h2 className="options-editprofile">My Interests:</h2>
               )}
               <Stack style={{ flexWrap: 'wrap', paddingLeft: '1em' }} direction="row" spacing={1}>
-                {user.kinks.length > 0 && user.kinks.map(kink =>
-                  <Chip key={kink + '-deletable'} label={kink.toLowerCase()} onClick={handleDeleteInterest(kink)} onDelete={handleDeleteInterest(kink)} />
+                {user.kinks.length > 0 && user.kinks.map(interest =>
+                  <Chip key={interest + '-deletable'} label={interest.toLowerCase()} onClick={handleDeleteInterest(interest)} onDelete={handleDeleteInterest(interest)} />
                 )}
               </Stack>
               <h3 className="options-editprofile">Choose More Interests Below:</h3>
               <Stack style={{ flexWrap: 'wrap', paddingLeft: '1em' }} direction="row" spacing={1}>
                 {selectableInterests
                   .filter(item => !user.kinks.includes(item))
-                  .map(kink =>
-                    <Chip key={kink + '-selectable'} style={{ marginBottom: '1em', marginLeft: '0', marginRight: '8px' }} label={kink.toLowerCase()} onClick={handleAddInterest(kink)} />
+                  .map(interest =>
+                    <Chip key={interest + '-selectable'} style={{ marginBottom: '1em', marginLeft: '0', marginRight: '8px' }} label={interest.toLowerCase()} onClick={handleAddInterest(interest)} />
                   )}
               </Stack>
             </div>

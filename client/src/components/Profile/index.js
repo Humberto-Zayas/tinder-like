@@ -73,8 +73,8 @@ const Profile = (props) => {
           <p>Role: {user.role}</p>
           <p>Interests:</p>
           <ul>
-            {user.kinks.map(kink => 
-              <li key={kink}>{kink}</li>
+            {user.kinks.map(interest => 
+              <li key={interest}>{interest}</li>
             )}
           </ul>
           <p>Description: {user.description}</p>
