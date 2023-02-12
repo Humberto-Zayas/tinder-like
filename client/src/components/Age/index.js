@@ -195,26 +195,26 @@ const Age = () => {
                 <FormLabel id="demo-radio-buttons-group-label">Role:</FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="Sissy"
+                  defaultValue="Female"
                   name="radio-buttons-group">
                   <FormControlLabel
                     name="role"
                     type="radio"
-                    id="sissy"
-                    value="sissy"
+                    id="female"
+                    value="female"
                     onChange={handleChange}
-                    checked={sissy}
+                    checked={female}
                     control={<Radio />}
-                    label="Sissy" />
+                    label="Female" />
                   <FormControlLabel
                     name="role"
                     type="radio"
-                    id="admirer"
-                    value="admirer"
+                    id="male"
+                    value="male"
                     onChange={handleChange}
-                    checked={admirer}
+                    checked={male}
                     control={<Radio />}
-                    label="Admirer" />
+                    label="Male" />
                 </RadioGroup>
               </FormControl>
               <FormHelperText>Please only pick one!</FormHelperText>

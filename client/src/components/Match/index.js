@@ -64,7 +64,7 @@ const Match = () => {
 
   useEffect(()=> {
     if (me) {
-      let myPreference = (me.me.role === 'sissy' ? 'admirer' : 'sissy' )
+      let myPreference = (me.me.role === 'female' ? 'male' : 'female' )
       setPreference(myPreference);
     }
   })
@@ -90,16 +90,16 @@ const Match = () => {
           name="controlled-radio-buttons-group"
           value={preference}
           onChange={handlePreferenceChange}>
-          <FormControlLabel value="sissy" control={<Radio />} label="Sissy" />
-          <FormControlLabel value="admirer" control={<Radio />} label="Admirer" />
+          <FormControlLabel value="female" control={<Radio />} label="Female" />
+          <FormControlLabel value="male" control={<Radio />} label="Male" />
         </RadioGroup>
       </FormControl>     
       <hr />
       <br/> 
       <div className='flex-row gap-1'>
         <div>
-          {/* if value equals "sissy" show <p>Sissies</p> else if not...show <p>Admirers</p>  */}
-          {preference === 'sissy' ? <p>Sissies</p> : <p>Admirers</p>}
+          {/* if value equals "female" show <p>Female</p> else if not...show <p>Male</p>  */}
+          {preference === 'female' ? <p>Female</p> : <p>Male</p>}
           <hr/>
 
           {filteredUsers?.map(user => 

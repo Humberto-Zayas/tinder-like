@@ -598,27 +598,27 @@ const EditProfile = () => {
 
             <h2 className="options-editprofile">Role:</h2>
             <div className="multiple-input-container">
-              <label htmlFor="white">Sissy</label>
+              <label htmlFor="white">Female</label>
               <input
                 className="form-input"
                 placeholder="Role"
                 name="role"
                 type="radio"
-                id="sissy"
-                value="sissy"
+                id="female"
+                value="female"
                 onChange={handleChange}
-                checked={formState.role === "sissy"}
+                checked={formState.role === "female"}
               />
-              <label htmlFor="black">Admirer</label>
+              <label htmlFor="black">Male</label>
               <input
                 className="form-input"
                 placeholder="Role"
                 name="role"
                 type="radio"
-                id="admirer"
-                value="admirer"
+                id="male"
+                value="male"
                 onChange={handleChange}
-                checked={formState.role === "admirer"}
+                checked={formState.role === "male"}
               />
             </div>
             {/* -----------ROLE END------- */}
