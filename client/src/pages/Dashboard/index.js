@@ -9,6 +9,7 @@ import MatchesDisplay from '../../components/MatchesDisplay';
 import { ADD_FRIEND } from "../../utils/mutations";
 
 const Dashboard = (me, userLocation) => {
+  console.log('passed me: ', me)
   const [filteredUsers, setFilteredUsers] = useState([]);
   // swipe stuff
   const [lastDirection, setLastDirection] = useState();
@@ -17,8 +18,8 @@ const Dashboard = (me, userLocation) => {
     variables: { role: me.me.me.role }
   });
 
-  const matchedUserIds = me.me.me.friends.map(friend => friend._id).concat(me.me.me._id);
-  console.log('matched ids: ', matchedUserIds);
+  // const matchedUserIds = me.me.me.friends.map(friend => friend._id).concat(me.me.me._id);
+  // console.log('matched ids: ', matchedUserIds);
 
   // Begin SWIPE Functions 
   const swiped = (direction, nameToDelete, id) => {
@@ -143,18 +144,16 @@ const Dashboard = (me, userLocation) => {
                 )
               }
             </div>
-            {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div onClick={nextMeat} style={{ padding: '0.5em 1em', borderRadius: '10px', backgroundColor: 'gray', display: 'inline-block', cursor: 'pointer' }}>Next Person</div>
-      </div> */}
+           
           </div>
         </Grid>
-        <Grid item md={8} xs={12}>
+        {/* <Grid item md={8} xs={12}>
           <div>
             <p> {me.me.me.username}'s Fren List</p>
             <hr />
-            <MatchesDisplay matches={matchedUserIds} myID={me?.me._id}></MatchesDisplay >
+            <MatchesDisplay matches={matchedUserIds} myID={me?.me.me._id}></MatchesDisplay >
           </div>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   )

@@ -27,6 +27,8 @@ const Home = () => {
     });
   }, [myData]);
 
+  console.log(me)
+
   if(!userLocation) {
     return (
       <div>loading...</div>

@@ -22,7 +22,8 @@ const Inbox = () => {
   const { loading: loadingMe, data: myData } = useQuery(QUERY_ME);
   const { loading: loadingUsers, data: usersData } = useQuery(QUERY_USERS);
 
-  const matchedUserIds = me?.me.friends.map(friend => friend._id).concat(me?.me._id);
+
+  const matchedUserIds = me?.me.friends?.map(friend => friend._id).concat(me?.me._id);
   console.log('matched ids: ', matchedUserIds);
 
   const handleClick = (username) => {
@@ -31,7 +32,7 @@ const Inbox = () => {
 
   useEffect(() => {
     setMe(myData);
-    setUsers(usersData);
+    
   }, [myData, usersData]) 
 
   if (!loggedIn) { 
@@ -47,14 +48,7 @@ const Inbox = () => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            {/* <ul>
-            {users?.users.map(user => 
-                <li onClick={() => setPartner(user.username)} key={user._id}>{user.username}</li>
-            )}
-            </ul> */}
-
-            {/* pass in function to get get username back here to setPartner */}
-
+           
             <MatchList userNameClick={handleClick} matches={matchedUserIds} myID={me?.me._id}></MatchList> 
           </Grid>
           <Grid item xs={8}>
